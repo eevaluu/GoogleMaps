@@ -36,8 +36,10 @@
             this.btnstreetview = new System.Windows.Forms.Button();
             this.label1 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
+            this.trackBar1 = new System.Windows.Forms.TrackBar();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.trackBar1)).BeginInit();
             this.SuspendLayout();
             // 
             // btnstaticmap
@@ -70,9 +72,9 @@
             // 
             // pictureBox2
             // 
-            this.pictureBox2.Location = new System.Drawing.Point(324, 83);
+            this.pictureBox2.Location = new System.Drawing.Point(328, 82);
             this.pictureBox2.Name = "pictureBox2";
-            this.pictureBox2.Size = new System.Drawing.Size(252, 226);
+            this.pictureBox2.Size = new System.Drawing.Size(255, 226);
             this.pictureBox2.TabIndex = 3;
             this.pictureBox2.TabStop = false;
             // 
@@ -86,12 +88,13 @@
             // 
             // btnstreetview
             // 
-            this.btnstreetview.Location = new System.Drawing.Point(324, 54);
+            this.btnstreetview.Location = new System.Drawing.Point(94, 54);
             this.btnstreetview.Name = "btnstreetview";
             this.btnstreetview.Size = new System.Drawing.Size(75, 23);
             this.btnstreetview.TabIndex = 7;
             this.btnstreetview.Text = "Street View";
             this.btnstreetview.UseVisualStyleBackColor = true;
+            this.btnstreetview.Visible = false;
             this.btnstreetview.Click += new System.EventHandler(this.btnstreetview_Click);
             // 
             // label1
@@ -112,12 +115,26 @@
             this.label2.TabIndex = 9;
             this.label2.Text = "City/State";
             // 
+            // trackBar1
+            // 
+            this.trackBar1.Location = new System.Drawing.Point(274, 83);
+            this.trackBar1.Maximum = 20;
+            this.trackBar1.Minimum = 13;
+            this.trackBar1.Name = "trackBar1";
+            this.trackBar1.Orientation = System.Windows.Forms.Orientation.Vertical;
+            this.trackBar1.Size = new System.Drawing.Size(45, 225);
+            this.trackBar1.TabIndex = 10;
+            this.trackBar1.Value = 13;
+            this.trackBar1.Visible = false;
+            this.trackBar1.Scroll += new System.EventHandler(this.trackBar1_Scroll);
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.BackgroundImage = global::Google_Maps.Properties.Resources.OldPaper;
-            this.ClientSize = new System.Drawing.Size(620, 341);
+            this.BackColor = System.Drawing.SystemColors.ButtonHighlight;
+            this.ClientSize = new System.Drawing.Size(606, 336);
+            this.Controls.Add(this.trackBar1);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.btnstreetview);
@@ -131,6 +148,7 @@
             this.Text = "Form1";
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.trackBar1)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -146,6 +164,7 @@
         private System.Windows.Forms.Button btnstreetview;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Label label2;
+        private System.Windows.Forms.TrackBar trackBar1;
     }
 }
 
