@@ -8,6 +8,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.Net;
+using System.Diagnostics;
 
 namespace Google_Maps
 {
@@ -56,6 +57,11 @@ namespace Google_Maps
             WebResponse repsonsePic = requestPic.GetResponse();
             Image map = Image.FromStream(repsonsePic.GetResponseStream());
             pictureBox1.Image = map;
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            Process.Start("chrome.exe", "http://maps.googleapis.com/maps/api/streetview?size=300x300&location=" + streetaddress + "," + cityname + "&heading=235&sensor=false");
         }
        
     }
