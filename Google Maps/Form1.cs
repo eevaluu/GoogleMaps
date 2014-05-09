@@ -20,7 +20,7 @@ namespace Google_Maps
         }
 
         string streetaddress, cityname;
-        int zoom = 13;
+        int zoom = 13, rotate = 235;
 
          private void btnstaticmap_Click(object sender, EventArgs e)
         {
@@ -39,13 +39,21 @@ namespace Google_Maps
 
         private void btnstreetview_Click(object sender, EventArgs e)
         {
+            trackBar2.Visible = true;
+            rotate = trackBar2.Value;
+
             streetaddress = textbox1.Text;
             cityname = textbox2.Text;
 
-            WebRequest requestPic = WebRequest.Create("http://maps.googleapis.com/maps/api/streetview?size=300x300&location=" + streetaddress + "," + cityname + "&heading=235&sensor=false");
+            WebRequest requestPic = WebRequest.Create("http://maps.googleapis.com/maps/api/streetview?size=300x300&location=" + streetaddress + "," + cityname + "&heading="+ rotate +"&sensor=false");
             WebResponse repsonsePic = requestPic.GetResponse();
             Image map = Image.FromStream(repsonsePic.GetResponseStream());
             pictureBox2.Image = map;
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            Process.Start("chrome.exe");
         }
 
         private void trackBar1_Scroll(object sender, EventArgs e)
@@ -53,15 +61,24 @@ namespace Google_Maps
             zoom = trackBar1.Value;
             streetaddress = textbox1.Text;
             cityname = textbox2.Text;
-            WebRequest requestPic = WebRequest.Create("http://maps.googleapis.com/maps/api/staticmap?center=" + streetaddress + "," + cityname + "&zoom=" + zoom + "&size=300x300&sensor=false");
+            
+            WebRequest requestPic = WebRequest.Create("http://maps.googleapis.com/maps/api/staticmap?center=" + streetaddress + "," + cityname + "&zoom=13&size=300x300&sensor=false");
             WebResponse repsonsePic = requestPic.GetResponse();
             Image map = Image.FromStream(repsonsePic.GetResponseStream());
             pictureBox1.Image = map;
         }
 
-        private void button1_Click(object sender, EventArgs e)
+        private void trackBar2_Scroll(object sender, EventArgs e)
         {
-            Process.Start("chrome.exe", "http://maps.googleapis.com/maps/api/streetview?size=300x300&location=" + streetaddress + "," + cityname + "&heading=235&sensor=false");
+            rotate = trackBar2.Value * 20;
+
+            streetaddress = textbox1.Text;
+            cityname = textbox2.Text;
+
+            WebRequest requestPic = WebRequest.Create("http://maps.googleapis.com/maps/api/streetview?size=300x300&location=" + streetaddress + "," + cityname + "&heading=" + rotate + "&sensor=false");
+            WebResponse repsonsePic = requestPic.GetResponse();
+            Image map = Image.FromStream(repsonsePic.GetResponseStream());
+            pictureBox2.Image = map;
         }
        
     }
